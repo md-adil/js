@@ -25,10 +25,10 @@ var dom = (function(){
 		}
 		return el;
 	};
-	Object.defineProperties(domObj, {
+	Object.defineProperties(HTMLElement.prototype, {
 		to: {
 			value: function(target) {
-				element = this.el;
+				element = this;
 				var tes = document.querySelectorAll(target);
 				for(var i = 0; i < tes.length; i++) {
 					tes[i].appendChild(element);
@@ -37,6 +37,7 @@ var dom = (function(){
 			}
 		}
 	});
+
 	tags.forEach(function(tag) {
 		Object.defineProperty(domObj, tag, {
 			value: function(arg1, arg2, arg3) {
